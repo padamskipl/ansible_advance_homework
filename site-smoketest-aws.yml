@@ -1,6 +1,5 @@
 - hosts: frontends
   gather_facts: false
-
   tasks:
 
   - name: Use Uri module for wrting smoke test.
@@ -8,6 +7,9 @@
       url: "http://{{ inventory_hostname }}"
       return_content: yes
     register: webpage
+
+#  - name: whats in webpage
+#    debug: "{{ webpage.content }}"
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
