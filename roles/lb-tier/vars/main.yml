@@ -1,2 +1,5 @@
 ---
 # vars file for lb-tier
+frontend_port: 80
+tomcat_port: 8080
+
