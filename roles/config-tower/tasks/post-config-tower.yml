@@ -23,7 +23,7 @@
     tower_host: tower1.{{tower_GUID}}.example.opentlc.com
     tower_username: admin
     tower_password: r3dh4t1!
-    ssh_key_data: "/root/.ssh/openstack.pem"
+    ssh_key_data: "{{ lookup('file', '/root/.ssh/openstack.pem') }}" 
     username: cloud-user
 
 - name: Create Inventory
@@ -36,11 +36,11 @@
 
 - name: Add workstation host in tower_inventory 
   command: |
-    tower-cli host create --inventory "{{static_inventory_name}}" --name "{{host_name}}"
+    awx-cli host create --inventory "{{static_inventory_name}}" --name "{{host_name}}"
 
 - name: Associate workstation host to group 
   command: | 
-    tower-cli host associate --host "{{host_name}}" --group "{{group_name}}"
+    awx-cli host associate --host "{{host_name}}" --group "{{group_name}}"
 
 
 - name: Tower Creds key file
