@@ -1,6 +1,9 @@
 ---
 # tasks file for app-tier
 
+- name: fix REPO problem
+  command: yum clean all
+
 - name: install tomcat
   package:
     name: tomcat
